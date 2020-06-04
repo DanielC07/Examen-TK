@@ -8,7 +8,7 @@ window.geometry("400x200")
 miFrame = Frame(window)
 miFrame.pack()
 
-welcomelbl = tkinter.Label(miFrame, text = "BIENVENIDO", font = ("arial", 18))
+welcomelbl = tkinter.Label(miFrame, text = "BIENVENIDO", font = ("arial", 15))
 label1 = tkinter.Label(miFrame, text = "Nombre")
 label2 = tkinter.Label(miFrame, text = "Apellido")
 label3 = tkinter.Label(miFrame, text = "Día")
@@ -22,8 +22,15 @@ txt3 = tkinter.Entry(miFrame)
 txt4 = tkinter.Entry(miFrame)
 txt5 = tkinter.Entry(miFrame)
 
+def funcion_2 ():
+    txtdia = txt3.get()
+    txtmes = txt4.get()
+    txtaño = txt5.get()
+    labelres["text"] = 'Usted nació el ' + txtdia + '/' + txtmes + '/' + txtaño
+
+
 btn1 = tkinter.Button(miFrame, text = "Función 1")
-btn2 = tkinter.Button(miFrame, text = "Función 2")
+btn2 = tkinter.Button(miFrame, text = "Función 2", command = funcion_1)
 btn3 = tkinter.Button(miFrame, text = "Función 3")
 btn4 = tkinter.Button(miFrame, text = "Función 4")
 btn5 = tkinter.Button(miFrame, text = "Función 5")
