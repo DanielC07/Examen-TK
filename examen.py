@@ -23,7 +23,7 @@ varmes = Entry(miFrame)
 varaño = Entry(miFrame)
 
 def funcion_1():
-    dia1 = float(vardia.get())
+    dia1 = int(vardia.get())
     mes1 = int(varmes.get())
     año1 = int(varaño.get())
     binadia = ''
@@ -39,7 +39,27 @@ def funcion_1():
     binadia += '1'
     binadia = binadia[::-1]
 
-    labelres["text"]= binadia
+    while mes1-1 !=0:
+        if mes1 % 2 == 0:
+            binames += '0'
+            mes1 /= 2
+        else:
+            binames += '1'
+            mes1 = int(mes1 / 2)
+    binames += '1'
+    binames = binames[::-1]
+
+    while año1-1 !=0:
+        if año1 % 2 == 0:
+            binaño += '0'
+            año1 /= 2
+        else:
+            binaño += '1'
+            año1 = int(año1 / 2)
+    binaño += '1'
+    binaño = binaño[::-1]
+
+    labelres["text"]= str(dia1) + '/' + str(mes1) + '/' + str(año1) + '=' + binadia + '/' + binames + '/' + binaño
     
 def funcion_2 ():
     limidia = 0
