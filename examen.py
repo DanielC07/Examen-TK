@@ -26,6 +26,9 @@ def funcion_1():
     dia1 = int(vardia.get())
     mes1 = int(varmes.get())
     año1 = int(varaño.get())
+    d = dia1
+    m = mes1
+    y = año1
     binadia = ''
     binames = ''
     binaño = ''
@@ -59,7 +62,7 @@ def funcion_1():
     binaño += '1'
     binaño = binaño[::-1]
 
-    labelres["text"]= str(dia1) + '/' + str(mes1) + '/' + str(año1) + '=' + binadia + '/' + binames + '/' + binaño
+    labelres["text"]= str(d) + '/' + str(m) + '/' + str(y) + ' = ' + binadia + '/' + binames + '/' + binaño
     
 def funcion_2 ():
     limidia = 0
@@ -67,13 +70,28 @@ def funcion_2 ():
     mes2 = int(varmes.get())
     año2 = int(varaño.get())
 
-    
+def funcion_3():
+    nom = txt1.get()
+    ape = txt2.get()
+    tamnom = len(nom)
+    tamape = len(ape)
+    parnom = ''
+    parape = ''
+    if tamnom % 2 == 0:
+        parnom = 'su nombre es par'
+    else:
+        parnom = 'su nombre es impar'
+    if tamape % 2 == 0:
+        parape = 'su apellido es par'
+    else:
+        parape = 'su apellido es impar'
+    labelres["text"]= nom + " " + ape + " " + parnom + " y " + parape
     
     
 
 btn1 = tkinter.Button(miFrame, text = "Función 1", command = funcion_1)
 btn2 = tkinter.Button(miFrame, text = "Función 2", command = funcion_2)
-btn3 = tkinter.Button(miFrame, text = "Función 3")
+btn3 = tkinter.Button(miFrame, text = "Función 3", command = funcion_3)
 btn4 = tkinter.Button(miFrame, text = "Función 4")
 btn5 = tkinter.Button(miFrame, text = "Función 5")
 
