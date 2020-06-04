@@ -86,14 +86,20 @@ def funcion_3():
     else:
         parape = 'su apellido es impar'
     labelres["text"]= nom + " " + ape + " " + parnom + " y " + parape
-    
-    
+
+def funcion_5():
+    nom = txt1.get()
+    ape = txt2.get()
+    revnom = nom[::-1]
+    revape = ape[::-1]
+    labelres["text"]= nom + " " + ape +" al revés es " + revape + " " + revnom
+
 
 btn1 = tkinter.Button(miFrame, text = "Función 1", command = funcion_1)
 btn2 = tkinter.Button(miFrame, text = "Función 2", command = funcion_2)
 btn3 = tkinter.Button(miFrame, text = "Función 3", command = funcion_3)
 btn4 = tkinter.Button(miFrame, text = "Función 4")
-btn5 = tkinter.Button(miFrame, text = "Función 5")
+btn5 = tkinter.Button(miFrame, text = "Función 5", command = funcion_5)
 
 welcomelbl.grid(row = 0, column = 0, columnspan = 6)
 label1.grid(row = 1, column = 1, columnspan = 2)
