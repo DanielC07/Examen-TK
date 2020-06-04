@@ -15,4 +15,10 @@ txt3 = tkinter.Entry(window)
 txt4 = tkinter.Entry(window)
 txt5 = tkinter.Entry(window)
 
+btn1 = tkinter.Button(window, text = "Función 1")
+btn2 = tkinter.Button(window, text = "Función 2")
+btn3 = tkinter.Button(window, text = "Función 3")
+btn4 = tkinter.Button(window, text = "Función 4")
+btn5 = tkinter.Button(window, text = "Función 5")
+
 window.mainloop()
