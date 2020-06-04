@@ -1,7 +1,7 @@
 import tkinter
 
 window = tkinter.Tk()
-window.geometry("800x300")
+window.title("Examen Final")
 
 label1 = tkinter.Label(window, text = "Nombre")
 label2 = tkinter.Label(window, text = "Apellido")
@@ -21,16 +21,22 @@ btn3 = tkinter.Button(window, text = "Función 3")
 btn4 = tkinter.Button(window, text = "Función 4")
 btn5 = tkinter.Button(window, text = "Función 5")
 
-label1.grid(row = 1, column = 1)
-label2.grid(row = 2, column = 1)
-label3.grid(row = 3, column = 1)
-label4.grid(row = 4, column = 1)
-label5.grid(row = 5, column = 1)
+label1.grid(row = 0, column = 0, columnspan = 2)
+label2.grid(row = 1, column = 0, columnspan = 2)
+label3.grid(row = 2, column = 0, columnspan = 2)
+label4.grid(row = 3, column = 0, columnspan = 2)
+label5.grid(row = 4, column = 0, columnspan = 2)
 
-txt1.grid(row = 1, column = 2)
-txt2.grid(row = 2, column = 2)
-txt3.grid(row = 3, column = 2)
-txt4.grid(row = 4, column = 2)
-txt5.grid(row = 5, column = 2)
+txt1.grid(row = 0, column = 1, columnspan = 4)
+txt2.grid(row = 1, column = 1, columnspan = 4)
+txt3.grid(row = 2, column = 1, columnspan = 4)
+txt4.grid(row = 3, column = 1, columnspan = 4)
+txt5.grid(row = 4, column = 1, columnspan = 4)
+
+btn1.grid(row = 5, column = 0)
+btn2.grid(row = 5, column = 1)
+btn3.grid(row = 5, column = 2)
+btn4.grid(row = 5, column = 3)
+btn5.grid(row = 5, column = 4)
 
 window.mainloop()
