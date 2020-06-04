@@ -18,19 +18,41 @@ labelres = tkinter.Label(miFrame, text = "Acá se verá el resultado de las func
 
 txt1 = tkinter.Entry(miFrame)
 txt2 = tkinter.Entry(miFrame)
-txt3 = tkinter.Entry(miFrame)
-txt4 = tkinter.Entry(miFrame)
-txt5 = tkinter.Entry(miFrame)
+vardia = Entry(miFrame)
+varmes = Entry(miFrame)
+varaño = Entry(miFrame)
 
+def funcion_1():
+    dia1 = float(vardia.get())
+    mes1 = int(varmes.get())
+    año1 = int(varaño.get())
+    binadia = ''
+    binames = ''
+    binaño = ''
+    while dia1-1 !=0:
+        if dia1 % 2 == 0:
+            binadia += '0'
+            dia1 /= 2
+        else:
+            binadia += '1'
+            dia1 = int(dia1 / 2)
+    binadia += '1'
+    binadia = binadia[::-1]
+
+    labelres["text"]= binadia
+    
 def funcion_2 ():
-    txtdia = txt3.get()
-    txtmes = txt4.get()
-    txtaño = txt5.get()
-    labelres["text"] = 'Usted nació el ' + txtdia + '/' + txtmes + '/' + txtaño
+    limidia = 0
+    dia2 = int(vardia.get())
+    mes2 = int(varmes.get())
+    año2 = int(varaño.get())
 
+    
+    
+    
 
-btn1 = tkinter.Button(miFrame, text = "Función 1")
-btn2 = tkinter.Button(miFrame, text = "Función 2", command = funcion_1)
+btn1 = tkinter.Button(miFrame, text = "Función 1", command = funcion_1)
+btn2 = tkinter.Button(miFrame, text = "Función 2", command = funcion_2)
 btn3 = tkinter.Button(miFrame, text = "Función 3")
 btn4 = tkinter.Button(miFrame, text = "Función 4")
 btn5 = tkinter.Button(miFrame, text = "Función 5")
@@ -45,9 +67,9 @@ labelres.grid(row = 7, column = 0, columnspan = 6)
 
 txt1.grid(row = 1, column = 3, columnspan = 4, sticky = W+E)
 txt2.grid(row = 2, column = 3, columnspan = 4, sticky = W+E)
-txt3.grid(row = 3, column = 3, columnspan = 4, sticky = W+E)
-txt4.grid(row = 4, column = 3, columnspan = 4, sticky = W+E)
-txt5.grid(row = 5, column = 3, columnspan = 4, sticky = W+E)
+vardia.grid(row = 3, column = 3, columnspan = 4, sticky = W+E)
+varmes.grid(row = 4, column = 3, columnspan = 4, sticky = W+E)
+varaño.grid(row = 5, column = 3, columnspan = 4, sticky = W+E)
 
 btn1.grid(row = 6, column = 1)
 btn2.grid(row = 6, column = 2)
