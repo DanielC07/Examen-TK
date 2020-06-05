@@ -66,9 +66,35 @@ def funcion_1():
     
 def funcion_2 ():
     limidia = 0
-    dia2 = int(vardia.get())
-    mes2 = int(varmes.get())
-    año2 = int(varaño.get())
+    dia = int(vardia.get())
+    mes = int(varmes.get())
+    año = int(varaño.get())
+
+    if año <= 0:
+        labelres["text"]= "El año no puede ser menor a 0, ingreselo nuevamente"
+    if mes <= 0 or mes >=12:
+        labelres["text"]= "El mes solo puede variar de 1 a 12, ingreselo nuevamente"
+    else:
+        if año % 4 == 0:
+            if mes == 2:
+                limidia = 29
+            else:
+                if mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12:
+                    limidia = 31
+                else:
+                    limidia = 30
+        else:
+            if mes == 2:
+                limidia = 28
+            else:
+                if mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12:
+                    limidia = 31
+                else:
+                    limidia = 30
+        if dia <= 0 or dia > limidia:
+            labelres["text"]= "El mes ingresado solo tiene " + str(limidia) + " días"
+        else:
+            labelres["text"]= "Usted nació el " + str(dia) + "/" + str(mes) + "/" + str(año)
 
 def funcion_3():
     nom = txt1.get()
@@ -92,7 +118,6 @@ def funcion_4():
     ape = txt2.get()
     nom1 = nom.upper()
     ape1 = ape.upper()
-    vocales = ["A","E","I","O","U","Á","É","Í","Ó","Ú"]
     contvocal = 0
     contconso = 0
     for i in nom1:
@@ -108,6 +133,7 @@ def funcion_4():
             contvocal += 1
         else:
             contconso += 1
+
     for i in ape1:
         if i == "A" or i == "Á":
             contvocal += 1
