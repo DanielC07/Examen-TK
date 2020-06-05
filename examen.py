@@ -46,58 +46,205 @@ def funcion_1():
             labelres["text"]= "Aún no hemos llegado a ese mes"
         elif dia1<= d and mes1<=m and año1>a:
             labelres["text"]= "Aún no hemos llegado a ese año"
-        elif dia1 == 29 and mes1 == 2 and año1 % 4 !=0:
-            labelres["text"]= "Ese año no es bisiesto, el mes solo tiene un máximo de 28 días"
-        elif dia1>29 and mes1 == 2:
-            labelres["text"]= "Recuerde que febrero solo puede tener un max de 29 días"
-        elif mes1 == 1 or mes1 == 3 or mes1 == 5 or mes1 == 7 or mes1 == 8 or mes1 == 10 or mes1 == 12 and dia1>31:
-            labelres["text"]= "El mes ingresado solo tiene un máximo de 31 días"
-        elif mes1 == 4 or mes1 == 6 or mes1 == 9 or mes1 == 11 and dia1>30:
-            labelres["text"]= "El mes ingresado solo tiene un máximo de 30 días"
-        else:
-        
-            naci = date(año1, mes1, dia1)
-        
-            if naci>actu:
-                labelres["text"]= "Las fechas no puede ser mayor a la actual"
+        elif mes1 == 2 and año1 % 4 !=0:
+            if dia1>28:
+                labelres["text"]= "Ese año no es bisiesto, el mes solo tiene un máximo de 28 días"
             else:
-                dia = vardia.get()
-                mes = varmes.get()
-                año = varaño.get()
-                binadia = ''
-                binames = ''
-                binaño = ''
-                while dia1-1 !=0:
-                    if dia1 % 2 == 0:
-                        binadia += '0'
-                        dia1 /= 2
-                    else:
-                        binadia += '1'
-                        dia1 = int(dia1 / 2)
-                binadia += '1'
-                binadia = binadia[::-1]
+                naci = date(año1, mes1, dia1)
+        
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:
+                    dia = vardia.get()
+                    mes = varmes.get()
+                    año = varaño.get()
+                    binadia = ''
+                    binames = ''
+                    binaño = ''
+                    while dia1-1 !=0:
+                        if dia1 % 2 == 0:
+                            binadia += '0'
+                            dia1 /= 2
+                        else:
+                            binadia += '1'
+                            dia1 = int(dia1 / 2)
+                    binadia += '1'
+                    binadia = binadia[::-1]
 
-                while mes1-1 !=0:
-                    if mes1 % 2 == 0:
-                        binames += '0'
-                        mes1 /= 2
-                    else:
-                        binames += '1'
-                        mes1 = int(mes1 / 2)
-                binames += '1'
-                binames = binames[::-1]
+                    while mes1-1 !=0:
+                        if mes1 % 2 == 0:
+                            binames += '0'
+                            mes1 /= 2
+                        else:
+                            binames += '1'
+                            mes1 = int(mes1 / 2)
+                    binames += '1'
+                    binames = binames[::-1]
 
-                while año1-1 !=0:
-                    if año1 % 2 == 0:
-                        binaño += '0'
-                        año1 /= 2
-                    else:
-                        binaño += '1'
-                        año1 = int(año1 / 2)
-                binaño += '1'
-                binaño = binaño[::-1]
+                    while año1-1 !=0:
+                        if año1 % 2 == 0:
+                            binaño += '0'
+                            año1 /= 2
+                        else:
+                            binaño += '1'
+                            año1 = int(año1 / 2)
+                    binaño += '1'
+                    binaño = binaño[::-1]
 
-                labelres["text"] = str(dia) + '/' + str(mes) + '/' + str(año) + ' = ' + binadia + '/' + binames + '/' + binaño
+                    if mes1<10:
+                        labelres["text"] = str(dia) + '/0' + str(mes) + '/' + str(año) + ' = ' + binadia + '/' + binames + '/' + binaño
+                    else:
+                        labelres["text"] = str(dia) + '/' + str(mes) + '/' + str(año) + ' = ' + binadia + '/' + binames + '/' + binaño
+
+        elif mes1 == 2 and año1 % 2 == 0:
+            if dia1>29:
+                labelres["text"]= "Es año bisiesto, febrero solo puede tener un máximo de 29 días"
+            else:
+                naci = date(año1, mes1, dia1)
+        
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:
+                    dia = vardia.get()
+                    mes = varmes.get()
+                    año = varaño.get()
+                    binadia = ''
+                    binames = ''
+                    binaño = ''
+                    while dia1-1 !=0:
+                        if dia1 % 2 == 0:
+                            binadia += '0'
+                            dia1 /= 2
+                        else:
+                            binadia += '1'
+                            dia1 = int(dia1 / 2)
+                    binadia += '1'
+                    binadia = binadia[::-1]
+
+                    while mes1-1 !=0:
+                        if mes1 % 2 == 0:
+                            binames += '0'
+                            mes1 /= 2
+                        else:
+                            binames += '1'
+                            mes1 = int(mes1 / 2)
+                    binames += '1'
+                    binames = binames[::-1]
+
+                    while año1-1 !=0:
+                        if año1 % 2 == 0:
+                            binaño += '0'
+                            año1 /= 2
+                        else:
+                            binaño += '1'
+                            año1 = int(año1 / 2)
+                    binaño += '1'
+                    binaño = binaño[::-1]
+
+                    if mes1<10:
+                        labelres["text"] = str(dia) + '/0' + str(mes) + '/' + str(año) + ' = ' + binadia + '/' + binames + '/' + binaño
+                    else:
+                        labelres["text"] = str(dia) + '/' + str(mes) + '/' + str(año) + ' = ' + binadia + '/' + binames + '/' + binaño
+        elif mes1 == 1 or mes1 == 3 or mes1 == 5 or mes1 == 7 or mes1 == 8 or mes1 == 10 or mes1 == 12:
+            if dia1>31:
+                labelres["text"]= "El mes ingresado solo tiene un máximo de 31 días"
+            else:
+                naci = date(año1, mes1, dia1)
+        
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:
+                    dia = vardia.get()
+                    mes = varmes.get()
+                    año = varaño.get()
+                    binadia = ''
+                    binames = ''
+                    binaño = ''
+                    while dia1-1 !=0:
+                        if dia1 % 2 == 0:
+                            binadia += '0'
+                            dia1 /= 2
+                        else:
+                            binadia += '1'
+                            dia1 = int(dia1 / 2)
+                    binadia += '1'
+                    binadia = binadia[::-1]
+
+                    while mes1-1 !=0:
+                        if mes1 % 2 == 0:
+                            binames += '0'
+                            mes1 /= 2
+                        else:
+                            binames += '1'
+                            mes1 = int(mes1 / 2)
+                    binames += '1'
+                    binames = binames[::-1]
+
+                    while año1-1 !=0:
+                        if año1 % 2 == 0:
+                            binaño += '0'
+                            año1 /= 2
+                        else:
+                            binaño += '1'
+                            año1 = int(año1 / 2)
+                    binaño += '1'
+                    binaño = binaño[::-1]
+
+                    if mes1<10:
+                        labelres["text"] = str(dia) + '/0' + str(mes) + '/' + str(año) + ' = ' + binadia + '/' + binames + '/' + binaño
+                    else:
+                        labelres["text"] = str(dia) + '/' + str(mes) + '/' + str(año) + ' = ' + binadia + '/' + binames + '/' + binaño
+
+        elif mes1 == 4 or mes1 == 6 or mes1 == 9 or mes1 == 11:
+            if dia1>30:
+                labelres["text"]= "El mes ingresado solo tiene un máximo de 30 días"
+            else:
+        
+                naci = date(año1, mes1, dia1)
+        
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:
+                    dia = vardia.get()
+                    mes = varmes.get()
+                    año = varaño.get()
+                    binadia = ''
+                    binames = ''
+                    binaño = ''
+                    while dia1-1 !=0:
+                        if dia1 % 2 == 0:
+                            binadia += '0'
+                            dia1 /= 2
+                        else:
+                            binadia += '1'
+                            dia1 = int(dia1 / 2)
+                    binadia += '1'
+                    binadia = binadia[::-1]
+
+                    while mes1-1 !=0:
+                        if mes1 % 2 == 0:
+                            binames += '0'
+                            mes1 /= 2
+                        else:
+                            binames += '1'
+                            mes1 = int(mes1 / 2)
+                    binames += '1'
+                    binames = binames[::-1]
+
+                    while año1-1 !=0:
+                        if año1 % 2 == 0:
+                            binaño += '0'
+                            año1 /= 2
+                        else:
+                            binaño += '1'
+                            año1 = int(año1 / 2)
+                    binaño += '1'
+                    binaño = binaño[::-1]
+
+                    if mes1<10:
+                        labelres["text"] = str(dia) + '/0' + str(mes) + '/' + str(año) + ' = ' + binadia + '/' + binames + '/' + binaño
+                    else:
+                        labelres["text"] = str(dia) + '/' + str(mes) + '/' + str(año) + ' = ' + binadia + '/' + binames + '/' + binaño
     
 def funcion_2 ():
     if txt1.get().strip() == "" or txt2.get().strip() == "" or vardia.get().strip() == "" or varmes.get().strip() == "" or varaño.get().strip() == "":
@@ -123,10 +270,33 @@ def funcion_2 ():
             labelres["text"]= "Aún no hemos llegado a ese mes"
         elif dia<= d and mes<=m and año>a:
             labelres["text"]= "Aún no hemos llegado a ese año"
-        elif dia == 29 and mes == 2 and año % 4 !=0:
-            labelres["text"]= "Ese año no es bisiesto, el mes solo tiene un máximo de 28 días"
-        elif dia>29 and mes == 2:
-            labelres["text"]= "Recuerde que febrero solo puede tener un max de 29 días"
+        elif mes == 2 and año % 4 !=0:
+            if dia>28:
+                labelres["text"]= "Ese año no es bisiesto, el mes solo tiene un máximo de 28 días"
+            else:
+                naci = date(año, mes, dia)
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:      
+                    diasvivid = actu-naci
+                    if mes<10:
+                        labelres["text"]= "Usted nació el " + str(dia) + "/0" + str(mes) + "/" + str(año) + " y ha vivido " + str(diasvivid.days) + " días"
+                    else:
+                        labelres["text"]= "Usted nació el " + str(dia) + "/" + str(mes) + "/" + str(año) + " y ha vivido " + str(diasvivid.days) + " días"
+
+        elif mes == 2 and año % 4 == 0:
+            if dia>29:
+                labelres["text"]= "Es año bisisesto, febrero solo puede tener un máximo de 29 días"
+            else:
+                naci = date(año, mes, dia)
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:      
+                    diasvivid = actu-naci
+                    if mes<10:
+                        labelres["text"]= "Usted nació el " + str(dia) + "/0" + str(mes) + "/" + str(año) + " y ha vivido " + str(diasvivid.days) + " días"
+                    else:
+                        labelres["text"]= "Usted nació el " + str(dia) + "/" + str(mes) + "/" + str(año) + " y ha vivido " + str(diasvivid.days) + " días"
         elif mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12:
             if dia>31:
                 labelres["text"]= "El mes ingresado solo tiene un máximo de 31 días"
@@ -181,35 +351,101 @@ def funcion_3():
             labelres["text"]= "Aún no hemos llegado a ese mes"
         elif dia<= d and mes<=m and año>a:
             labelres["text"]= "Aún no hemos llegado a ese año"
-        elif dia == 29 and mes == 2 and año % 4 !=0:
-            labelres["text"]= "Ese año no es bisiesto, el mes solo tiene un máximo de 28 días"
-        elif dia>29 and mes == 2:
-            labelres["text"]= "Recuerde que febrero solo puede tener un max de 29 días"
-        elif mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12 and dia>31:
-            labelres["text"]= "El mes ingresado solo tiene un máximo de 31 días"
-        elif mes == 4 or mes == 6 or mes == 9 or mes == 11 and dia>30:
-            labelres["text"]= "El mes ingresado solo tiene un máximo de 30 días"
-        else:
-
-            naci = date(año, mes, dia)
-            if naci>actu:
-                labelres["text"]= "Las fechas no puede ser mayor a la actual"
+        elif mes == 2 and año % 4 !=0:
+            if dia>28:
+                labelres["text"]= "Ese año no es bisiesto, el mes solo tiene un máximo de 28 días"
             else:
-                nom = txt1.get()
-                ape = txt2.get()
-                tamnom = len(nom)
-                tamape = len(ape)
-                parnom = ''
-                parape = ''
-                if tamnom % 2 == 0:
-                    parnom = 'su nombre es par'
+                naci = date(año, mes, dia)
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
                 else:
-                    parnom = 'su nombre es impar'
-                if tamape % 2 == 0:
-                    parape = 'su apellido es par'
+                    nom = txt1.get()
+                    ape = txt2.get()
+                    tamnom = len(nom)
+                    tamape = len(ape)
+                    parnom = ''
+                    parape = ''
+                    if tamnom % 2 == 0:
+                        parnom = 'su nombre es par'
+                    else:
+                        parnom = 'su nombre es impar'
+                    if tamape % 2 == 0:
+                        parape = 'su apellido es par'
+                    else:
+                        parape = 'su apellido es impar'
+                    labelres["text"]= nom + " " + ape + " " + parnom + " y " + parape
+
+        elif mes == 2 and año % 4 == 0:
+            if dia>29:
+                labelres["text"]= "Es año bisiesto, febrero solo puede tener un máximo de 29 días"
+            else:
+                naci = date(año, mes, dia)
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
                 else:
-                    parape = 'su apellido es impar'
-                labelres["text"]= nom + " " + ape + " " + parnom + " y " + parape
+                    nom = txt1.get()
+                    ape = txt2.get()
+                    tamnom = len(nom)
+                    tamape = len(ape)
+                    parnom = ''
+                    parape = ''
+                    if tamnom % 2 == 0:
+                        parnom = 'su nombre es par'
+                    else:
+                        parnom = 'su nombre es impar'
+                    if tamape % 2 == 0:
+                        parape = 'su apellido es par'
+                    else:
+                        parape = 'su apellido es impar'
+                    labelres["text"]= nom + " " + ape + " " + parnom + " y " + parape
+        elif mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12:
+            if dia>31:
+                labelres["text"]= "El mes ingresado solo tiene un máximo de 31 días"
+            else:
+                naci = date(año, mes, dia)
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:
+                    nom = txt1.get()
+                    ape = txt2.get()
+                    tamnom = len(nom)
+                    tamape = len(ape)
+                    parnom = ''
+                    parape = ''
+                    if tamnom % 2 == 0:
+                        parnom = 'su nombre es par'
+                    else:
+                        parnom = 'su nombre es impar'
+                    if tamape % 2 == 0:
+                        parape = 'su apellido es par'
+                    else:
+                        parape = 'su apellido es impar'
+                    labelres["text"]= nom + " " + ape + " " + parnom + " y " + parape
+
+        elif mes == 4 or mes == 6 or mes == 9 or mes == 11:
+            if dia>30:
+                labelres["text"]= "El mes ingresado solo tiene un máximo de 30 días"
+            else:
+
+                naci = date(año, mes, dia)
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:
+                    nom = txt1.get()
+                    ape = txt2.get()
+                    tamnom = len(nom)
+                    tamape = len(ape)
+                    parnom = ''
+                    parape = ''
+                    if tamnom % 2 == 0:
+                        parnom = 'su nombre es par'
+                    else:
+                        parnom = 'su nombre es impar'
+                    if tamape % 2 == 0:
+                        parape = 'su apellido es par'
+                    else:
+                        parape = 'su apellido es impar'
+                    labelres["text"]= nom + " " + ape + " " + parnom + " y " + parape
 
 def funcion_4():
     if txt1.get().strip() == "" or txt2.get().strip() == "" or vardia.get().strip() == "" or varmes.get().strip() == "" or varaño.get().strip() == "":
@@ -241,49 +477,158 @@ def funcion_4():
             labelres["text"]= "Aún no hemos llegado a ese mes"
         elif dia<= d and mes<=m and año>a:
             labelres["text"]= "Aún no hemos llegado a ese año"
-        elif dia == 29 and mes == 2 and año % 4 !=0:
-            labelres["text"]= "Ese año no es bisiesto, el mes solo tiene un máximo de 28 días"
-        elif dia>29 and mes == 2:
-            labelres["text"]= "Recuerde que febrero solo puede tener un max de 29 días"
-        elif mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12 and dia>31:
-            labelres["text"]= "El mes ingresado solo tiene un máximo de 31 días"
-        elif mes == 4 or mes == 6 or mes == 9 or mes == 11 and dia>30:
-            labelres["text"]= "El mes ingresado solo tiene un máximo de 30 días"
-        else:
-
-            naci = date(año, mes, dia)
-            if naci>actu:
-                labelres["text"]= "Las fechas no puede ser mayor a la actual"
+        elif mes == 2 and año % 4 !=0:
+            if dia>28:
+                labelres["text"]= "Ese año no es bisiesto, el mes solo tiene un máximo de 28 días"
             else:
-                for i in nom1:
-                    if i == "A" or i == "Á":
-                        contvocal += 1
-                    elif i == "E" or i == "É":
-                        contvocal += 1
-                    elif i == "I" or i == "Í":
-                        contvocal += 1
-                    elif i == "O" or i == "Ó":
-                        contvocal += 1
-                    elif i == "U" or i == "Ú":
-                        contvocal += 1
-                    else:
-                        contconso += 1
+                naci = date(año, mes, dia)
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:
+                    for i in nom1:
+                        if i == "A" or i == "Á":
+                            contvocal += 1
+                        elif i == "E" or i == "É":
+                            contvocal += 1
+                        elif i == "I" or i == "Í":
+                            contvocal += 1
+                        elif i == "O" or i == "Ó":
+                            contvocal += 1
+                        elif i == "U" or i == "Ú":
+                            contvocal += 1
+                        else:
+                            contconso += 1
 
-                for i in ape1:
-                    if i == "A" or i == "Á":
-                        contvocal += 1
-                    elif i == "E" or i == "É":
-                        contvocal += 1
-                    elif i == "I" or i == "Í":
-                        contvocal += 1
-                    elif i == "O" or i == "Ó":
-                        contvocal += 1
-                    elif i == "U" or i == "Ú":
-                        contvocal += 1
-                    else:
-                        contconso += 1
+                    for i in ape1:
+                        if i == "A" or i == "Á":
+                            contvocal += 1
+                        elif i == "E" or i == "É":
+                            contvocal += 1
+                        elif i == "I" or i == "Í":
+                            contvocal += 1
+                        elif i == "O" or i == "Ó":
+                            contvocal += 1
+                        elif i == "U" or i == "Ú":
+                            contvocal += 1
+                        else:
+                            contconso += 1
     
-                labelres["text"]= nom + " " + ape + " tiene " + str(contvocal) + " vocales y " + str(contconso) + " consonantes" 
+                    labelres["text"]= nom + " " + ape + " tiene " + str(contvocal) + " vocales y " + str(contconso) + " consonantes" 
+
+        elif mes == 2 and año % 4 ==0:
+            if dia>29:
+                labelres["text"]= "Es año bisiesto, febrero solo puede tener un máximo de 29 días"
+            else:
+                naci = date(año, mes, dia)
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:
+                    for i in nom1:
+                        if i == "A" or i == "Á":
+                            contvocal += 1
+                        elif i == "E" or i == "É":
+                            contvocal += 1
+                        elif i == "I" or i == "Í":
+                            contvocal += 1
+                        elif i == "O" or i == "Ó":
+                            contvocal += 1
+                        elif i == "U" or i == "Ú":
+                            contvocal += 1
+                        else:
+                            contconso += 1
+
+                    for i in ape1:
+                        if i == "A" or i == "Á":
+                            contvocal += 1
+                        elif i == "E" or i == "É":
+                            contvocal += 1
+                        elif i == "I" or i == "Í":
+                            contvocal += 1
+                        elif i == "O" or i == "Ó":
+                            contvocal += 1
+                        elif i == "U" or i == "Ú":
+                            contvocal += 1
+                        else:
+                            contconso += 1
+    
+                    labelres["text"]= nom + " " + ape + " tiene " + str(contvocal) + " vocales y " + str(contconso) + " consonantes" 
+
+        elif mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12:
+            if dia>31:
+                labelres["text"]= "El mes ingresado solo tiene un máximo de 31 días"
+            else:
+                naci = date(año, mes, dia)
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:
+                    for i in nom1:
+                        if i == "A" or i == "Á":
+                            contvocal += 1
+                        elif i == "E" or i == "É":
+                            contvocal += 1
+                        elif i == "I" or i == "Í":
+                            contvocal += 1
+                        elif i == "O" or i == "Ó":
+                            contvocal += 1
+                        elif i == "U" or i == "Ú":
+                            contvocal += 1
+                        else:
+                            contconso += 1
+
+                    for i in ape1:
+                        if i == "A" or i == "Á":
+                            contvocal += 1
+                        elif i == "E" or i == "É":
+                            contvocal += 1
+                        elif i == "I" or i == "Í":
+                            contvocal += 1
+                        elif i == "O" or i == "Ó":
+                            contvocal += 1
+                        elif i == "U" or i == "Ú":
+                            contvocal += 1
+                        else:
+                            contconso += 1
+    
+                    labelres["text"]= nom + " " + ape + " tiene " + str(contvocal) + " vocales y " + str(contconso) + " consonantes" 
+
+        elif mes == 4 or mes == 6 or mes == 9 or mes == 11:
+            if dia>30:
+                labelres["text"]= "El mes ingresado solo tiene un máximo de 30 días"
+            else:
+
+                naci = date(año, mes, dia)
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:
+                    for i in nom1:
+                        if i == "A" or i == "Á":
+                            contvocal += 1
+                        elif i == "E" or i == "É":
+                            contvocal += 1
+                        elif i == "I" or i == "Í":
+                            contvocal += 1
+                        elif i == "O" or i == "Ó":
+                            contvocal += 1
+                        elif i == "U" or i == "Ú":
+                            contvocal += 1
+                        else:
+                            contconso += 1
+
+                    for i in ape1:
+                        if i == "A" or i == "Á":
+                            contvocal += 1
+                        elif i == "E" or i == "É":
+                            contvocal += 1
+                        elif i == "I" or i == "Í":
+                            contvocal += 1
+                        elif i == "O" or i == "Ó":
+                            contvocal += 1
+                        elif i == "U" or i == "Ú":
+                            contvocal += 1
+                        else:
+                            contconso += 1
+    
+                    labelres["text"]= nom + " " + ape + " tiene " + str(contvocal) + " vocales y " + str(contconso) + " consonantes" 
 
 def funcion_5():
     if txt1.get().strip() == "" or txt2.get().strip() == "" or vardia.get().strip() == "" or varmes.get().strip() == "" or varaño.get().strip() == "":
@@ -313,21 +658,43 @@ def funcion_5():
             labelres["text"]= "Aún no hemos llegado a ese mes"
         elif dia<= d and mes<=m and año>a:
             labelres["text"]= "Aún no hemos llegado a ese año"
-        elif dia == 29 and mes == 2 and año % 4 !=0:
-            labelres["text"]= "Ese año no es bisiesto, el mes solo tiene un máximo de 28 días"
-        elif dia>29 and mes == 2:
-            labelres["text"]= "Recuerde que febrero solo puede tener un max de 29 días"
-        elif mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12 and dia>31:
-            labelres["text"]= "El mes ingresado solo tiene un máximo de 31 días"
-        elif mes == 4 or mes == 6 or mes == 9 or mes == 11 and dia>30:
-            labelres["text"]= "El mes ingresado solo tiene un máximo de 30 días"
-        else:
-
-            naci = date(año, mes, dia)
-            if naci>actu:
-                labelres["text"]= "Las fechas no puede ser mayor a la actual"
+        elif mes == 2 and año % 4 !=0:
+            if dia>28:
+                labelres["text"]= "Ese año no es bisiesto, el mes solo tiene un máximo de 28 días"
             else:
-                labelres["text"]= nom + " " + ape +" al revés es " + revape + " " + revnom
+                naci = date(año, mes, dia)
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:
+                    labelres["text"]= nom + " " + ape +" al revés es " + revape + " " + revnom
+        elif mes == 2 and año % 4 == 0:
+            if dia>29:
+                labelres["text"]= "Es año bisiesto, febrero solo puede tener un max de 29 días"
+            else:
+                naci = date(año, mes, dia)
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:
+                    labelres["text"]= nom + " " + ape +" al revés es " + revape + " " + revnom
+        elif mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12:
+            if dia>31:
+                labelres["text"]= "El mes ingresado solo tiene un máximo de 31 días"
+            else:
+                naci = date(año, mes, dia)
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:
+                    labelres["text"]= nom + " " + ape +" al revés es " + revape + " " + revnom
+        elif mes == 4 or mes == 6 or mes == 9 or mes == 11:
+            if dia>30:
+                labelres["text"]= "El mes ingresado solo tiene un máximo de 30 días"
+            else:
+
+                naci = date(año, mes, dia)
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:
+                    labelres["text"]= nom + " " + ape +" al revés es " + revape + " " + revnom
 
 
 btn1 = tkinter.Button(miFrame, text = "Función 1", command = funcion_1)
