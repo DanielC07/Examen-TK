@@ -1,6 +1,7 @@
 import tkinter
 from tkinter import *
 from datetime import date
+import datetime
 
 window = tkinter.Tk()
 window.title("Examen Final")
@@ -119,7 +120,14 @@ def funcion_2 ():
         if dia <= 0 or dia > limidia:
             labelres["text"]= "El mes ingresado solo tiene " + str(limidia) + " días, ingreselo nuevamente"
         else:
-            labelres["text"]= "Usted nació el " + str(dia) + "/" + str(mes) + "/" + str(año)
+            naci = date(año, mes, dia)
+            hoy = datetime.datetime.now()
+            a = hoy.year
+            m = hoy.month
+            d = hoy.day
+            actu = date(a, m, d)
+            diasvivid = actu-naci
+            labelres["text"]= str(diasvivid.days) + " días"
 
 def funcion_3():
     nom = txt1.get()
