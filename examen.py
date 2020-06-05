@@ -108,8 +108,21 @@ def funcion_4():
             contvocal += 1
         else:
             contconso += 1
-
-    labelres["text"]= nom + " " + ape + " tiene " + str(contvocal) + " vocales" 
+    for i in ape1:
+        if i == "A" or i == "Á":
+            contvocal += 1
+        elif i == "E" or i == "É":
+            contvocal += 1
+        elif i == "I" or i == "Í":
+            contvocal += 1
+        elif i == "O" or i == "Ó":
+            contvocal += 1
+        elif i == "U" or i == "Ú":
+            contvocal += 1
+        else:
+            contconso += 1
+    
+    labelres["text"]= nom + " " + ape + " tiene " + str(contvocal) + " vocales y " + str(contconso) + " consonantes" 
 
 def funcion_5():
     nom = txt1.get()
