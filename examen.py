@@ -127,18 +127,35 @@ def funcion_2 ():
             labelres["text"]= "Ese año no es bisiesto, el mes solo tiene un máximo de 28 días"
         elif dia>29 and mes == 2:
             labelres["text"]= "Recuerde que febrero solo puede tener un max de 29 días"
-        elif mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12 and dia>31:
-            labelres["text"]= "El mes ingresado solo tiene un máximo de 31 días"
-        elif mes == 4 or mes == 6 or mes == 9 or mes == 11 and dia>30:
-            labelres["text"]= "El mes ingresado solo tiene un máximo de 30 días"
-        else:
+        elif mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12:
+            if dia>31:
+                labelres["text"]= "El mes ingresado solo tiene un máximo de 31 días"
+            else:
+                naci = date(año, mes, dia)
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:      
+                    diasvivid = actu-naci
+                    if mes<10:
+                        labelres["text"]= "Usted nació el " + str(dia) + "/0" + str(mes) + "/" + str(año) + " y ha vivido " + str(diasvivid.days) + " días"
+                    else:
+                        labelres["text"]= "Usted nació el " + str(dia) + "/" + str(mes) + "/" + str(año) + " y ha vivido " + str(diasvivid.days) + " días"
 
-            naci = date(año, mes, dia)
-            if naci>actu:
-                labelres["text"]= "Las fechas no puede ser mayor a la actual"
-            else:      
-                diasvivid = actu-naci
-                labelres["text"]= "Usted nació el " + str(dia) + "/" + str(mes) + "/" + str(año) + " y ha vivido " + str(diasvivid.days) + " días"
+        elif mes == 4 or mes == 6 or mes == 9 or mes == 11:
+            if dia>30:
+                labelres["text"]= "El mes ingresado solo tiene un máximo de 30 días"
+            else:
+
+                naci = date(año, mes, dia)
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:      
+                    diasvivid = actu-naci
+                    if mes<10:
+                        labelres["text"]= "Usted nació el " + str(dia) + "/0" + str(mes) + "/" + str(año) + " y ha vivido " + str(diasvivid.days) + " días"
+                    else:
+                        labelres["text"]= "Usted nació el " + str(dia) + "/" + str(mes) + "/" + str(año) + " y ha vivido " + str(diasvivid.days) + " días"
+                        
 
 def funcion_3():
     if txt1.get().strip() == "" or txt2.get().strip() == "" or vardia.get().strip() == "" or varmes.get().strip() == "" or varaño.get().strip() == "":
