@@ -87,6 +87,30 @@ def funcion_3():
         parape = 'su apellido es impar'
     labelres["text"]= nom + " " + ape + " " + parnom + " y " + parape
 
+def funcion_4():
+    nom = txt1.get()
+    ape = txt2.get()
+    nom1 = nom.upper()
+    ape1 = ape.upper()
+    vocales = ["A","E","I","O","U","Á","É","Í","Ó","Ú"]
+    contvocal = 0
+    contconso = 0
+    for i in nom1:
+        if i == "A" or i == "Á":
+            contvocal += 1
+        elif i == "E" or i == "É":
+            contvocal += 1
+        elif i == "I" or i == "Í":
+            contvocal += 1
+        elif i == "O" or i == "Ó":
+            contvocal += 1
+        elif i == "U" or i == "Ú":
+            contvocal += 1
+        else:
+            contconso += 1
+
+    labelres["text"]= nom + " " + ape + " tiene " + str(contvocal) + " vocales" 
+
 def funcion_5():
     nom = txt1.get()
     ape = txt2.get()
@@ -98,7 +122,7 @@ def funcion_5():
 btn1 = tkinter.Button(miFrame, text = "Función 1", command = funcion_1)
 btn2 = tkinter.Button(miFrame, text = "Función 2", command = funcion_2)
 btn3 = tkinter.Button(miFrame, text = "Función 3", command = funcion_3)
-btn4 = tkinter.Button(miFrame, text = "Función 4")
+btn4 = tkinter.Button(miFrame, text = "Función 4", command = funcion_4)
 btn5 = tkinter.Button(miFrame, text = "Función 5", command = funcion_5)
 
 welcomelbl.grid(row = 0, column = 0, columnspan = 6)
