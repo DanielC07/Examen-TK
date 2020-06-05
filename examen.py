@@ -42,8 +42,58 @@ def funcion_1():
             labelres["text"]= "Las fechas no puede ser mayor a la actual"
         elif dia1>d and mes1>=m and año1>=a:
             labelres["text"]= "Aún no hemos llegado a ese día"
-        elif mes1>m and año1>=a:
-            labelres["text"]= "Aún no hemos llegado a ese mes"
+        elif mes1>m and año1>=a or año1<= a:
+            if mes1>12:
+                labelres["text"]= "El mes ingresado no existe"
+            elif mes1<12 and mes1>m:
+                labelres["text"]= "Aún no hemos llegado a ese mes"
+            else:
+                naci = date(año1, mes1, dia1)
+        
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:
+                    dia = vardia.get()
+                    mes = varmes.get()
+                    año = varaño.get()
+                    binadia = ''
+                    binames = ''
+                    binaño = ''
+                    while dia1-1 !=0:
+                        if dia1 % 2 == 0:
+                            binadia += '0'
+                            dia1 /= 2
+                        else:
+                            binadia += '1'
+                            dia1 = int(dia1 / 2)
+                    binadia += '1'
+                    binadia = binadia[::-1]
+
+                    while mes1-1 !=0:
+                        if mes1 % 2 == 0:
+                            binames += '0'
+                            mes1 /= 2
+                        else:
+                            binames += '1'
+                            mes1 = int(mes1 / 2)
+                    binames += '1'
+                    binames = binames[::-1]
+
+                    while año1-1 !=0:
+                        if año1 % 2 == 0:
+                            binaño += '0'
+                            año1 /= 2
+                        else:
+                            binaño += '1'
+                            año1 = int(año1 / 2)
+                    binaño += '1'
+                    binaño = binaño[::-1]
+
+                    if mes1<10:
+                        labelres["text"] = str(dia) + '/0' + str(mes) + '/' + str(año) + ' = ' + binadia + '/' + binames + '/' + binaño
+                    else:
+                        labelres["text"] = str(dia) + '/' + str(mes) + '/' + str(año) + ' = ' + binadia + '/' + binames + '/' + binaño
+
         elif dia1<= d and mes1<=m and año1>a:
             labelres["text"]= "Aún no hemos llegado a ese año"
         elif mes1 == 2 and año1 % 4 !=0:
@@ -266,8 +316,22 @@ def funcion_2 ():
             labelres["text"]= "Las fechas no puede ser mayor a la actual"
         elif dia>d and mes>=m and año>=a:
             labelres["text"]= "Aún no hemos llegado a ese día"
-        elif mes>m and año>=a:
-            labelres["text"]= "Aún no hemos llegado a ese mes"
+        elif mes>m and año>=a or año<= a:
+            if mes>12:
+                labelres["text"]= "El mes ingresado no existe"
+            elif mes<12 and mes>m:
+                labelres["text"]= "Aún no hemos llegado a ese mes"
+            else:
+                naci = date(año, mes, dia)
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:      
+                    diasvivid = actu-naci
+                    if mes<10:
+                        labelres["text"]= "Usted nació el " + str(dia) + "/0" + str(mes) + "/" + str(año) + " y ha vivido " + str(diasvivid.days) + " días"
+                    else:
+                        labelres["text"]= "Usted nació el " + str(dia) + "/" + str(mes) + "/" + str(año) + " y ha vivido " + str(diasvivid.days) + " días"
+
         elif dia<= d and mes<=m and año>a:
             labelres["text"]= "Aún no hemos llegado a ese año"
         elif mes == 2 and año % 4 !=0:
@@ -347,8 +411,32 @@ def funcion_3():
             labelres["text"]= "Las fechas no puede ser mayor a la actual"
         elif dia>d and mes>=m and año>=a:
             labelres["text"]= "Aún no hemos llegado a ese día"
-        elif mes>m and año>=a:
-            labelres["text"]= "Aún no hemos llegado a ese mes"
+        elif mes>m and año>=a or año<= a:
+            if mes>12:
+                labelres["text"]= "El mes ingresado no existe"
+            elif mes<12 and mes>m:
+                labelres["text"]= "Aún no hemos llegado a ese mes"
+            else:
+                naci = date(año, mes, dia)
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:
+                    nom = txt1.get()
+                    ape = txt2.get()
+                    tamnom = len(nom)
+                    tamape = len(ape)
+                    parnom = ''
+                    parape = ''
+                    if tamnom % 2 == 0:
+                        parnom = 'su nombre es par'
+                    else:
+                        parnom = 'su nombre es impar'
+                    if tamape % 2 == 0:
+                        parape = 'su apellido es par'
+                    else:
+                        parape = 'su apellido es impar'
+                    labelres["text"]= nom + " " + ape + " " + parnom + " y " + parape
+
         elif dia<= d and mes<=m and año>a:
             labelres["text"]= "Aún no hemos llegado a ese año"
         elif mes == 2 and año % 4 !=0:
@@ -473,8 +561,46 @@ def funcion_4():
             labelres["text"]= "Las fechas no puede ser mayor a la actual"
         elif dia>d and mes>=m and año>=a:
             labelres["text"]= "Aún no hemos llegado a ese día"
-        elif mes>m and año>=a:
-            labelres["text"]= "Aún no hemos llegado a ese mes"
+        elif mes>m and año>=a or año<= a:
+            if mes>12:
+                labelres["text"]= "El mes ingresado no existe"
+            elif mes<12 and mes>m:
+                labelres["text"]= "Aún no hemos llegado a ese mes"
+            else:
+                naci = date(año, mes, dia)
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:
+                    for i in nom1:
+                        if i == "A" or i == "Á":
+                            contvocal += 1
+                        elif i == "E" or i == "É":
+                            contvocal += 1
+                        elif i == "I" or i == "Í":
+                            contvocal += 1
+                        elif i == "O" or i == "Ó":
+                            contvocal += 1
+                        elif i == "U" or i == "Ú":
+                            contvocal += 1
+                        else:
+                            contconso += 1
+
+                    for i in ape1:
+                        if i == "A" or i == "Á":
+                            contvocal += 1
+                        elif i == "E" or i == "É":
+                            contvocal += 1
+                        elif i == "I" or i == "Í":
+                            contvocal += 1
+                        elif i == "O" or i == "Ó":
+                            contvocal += 1
+                        elif i == "U" or i == "Ú":
+                            contvocal += 1
+                        else:
+                            contconso += 1
+    
+                    labelres["text"]= nom + " " + ape + " tiene " + str(contvocal) + " vocales y " + str(contconso) + " consonantes" 
+
         elif dia<= d and mes<=m and año>a:
             labelres["text"]= "Aún no hemos llegado a ese año"
         elif mes == 2 and año % 4 !=0:
@@ -654,8 +780,18 @@ def funcion_5():
             labelres["text"]= "Las fechas no puede ser mayor a la actual"
         elif dia>d and mes>=m and año>=a:
             labelres["text"]= "Aún no hemos llegado a ese día"
-        elif mes>m and año>=a:
-            labelres["text"]= "Aún no hemos llegado a ese mes"
+        elif mes>m and año>=a or año<= a:
+            if mes>12:
+                labelres["text"]= "El mes ingresado no existe"
+            elif mes<12 and mes>m:
+                labelres["text"]= "Aún no hemos llegado a ese mes"
+            else:
+                naci = date(año, mes, dia)
+                if naci>actu:
+                    labelres["text"]= "Las fechas no puede ser mayor a la actual"
+                else:
+                    labelres["text"]= nom + " " + ape +" al revés es " + revape + " " + revnom
+                
         elif dia<= d and mes<=m and año>a:
             labelres["text"]= "Aún no hemos llegado a ese año"
         elif mes == 2 and año % 4 !=0:
