@@ -25,216 +25,148 @@ varmes = Entry(miFrame)
 varaño = Entry(miFrame)
 
 def funcion_1():
-    hoy = datetime.datetime.now()
-    a = hoy.year
-    m = hoy.month
-    d = hoy.day
     if txt1.get().strip() == "" or txt2.get().strip() == "" or vardia.get().strip() == "" or varmes.get().strip() == "" or varaño.get().strip() == "":
         labelres["text"]= "Todos los campos son requeridos"
     else:
         dia1 = int(vardia.get())
         mes1 = int(varmes.get())
         año1 = int(varaño.get())
+        naci = date(año1, mes1, dia1)
+        hoy = datetime.datetime.now()
+        a = hoy.year
+        m = hoy.month
+        d = hoy.day
+        actu = date(a, m, d)
+        if naci>actu:
+            labelres["text"]= "Las fechas no puede ser mayor a la actual"
+        else:
+            dia = vardia.get()
+            mes = varmes.get()
+            año = varaño.get()
+            binadia = ''
+            binames = ''
+            binaño = ''
+            while dia1-1 !=0:
+                if dia1 % 2 == 0:
+                    binadia += '0'
+                    dia1 /= 2
+                else:
+                    binadia += '1'
+                    dia1 = int(dia1 / 2)
+            binadia += '1'
+            binadia = binadia[::-1]
+
+            while mes1-1 !=0:
+                if mes1 % 2 == 0:
+                    binames += '0'
+                    mes1 /= 2
+                else:
+                    binames += '1'
+                    mes1 = int(mes1 / 2)
+            binames += '1'
+            binames = binames[::-1]
+
+            while año1-1 !=0:
+                if año1 % 2 == 0:
+                    binaño += '0'
+                    año1 /= 2
+                else:
+                    binaño += '1'
+                    año1 = int(año1 / 2)
+            binaño += '1'
+            binaño = binaño[::-1]
+
+            labelres["text"] = str(dia) + '/' + str(mes) + '/' + str(año) + ' = ' + binadia + '/' + binames + '/' + binaño
+    
+def funcion_2 ():
+    if txt1.get().strip() == "" or txt2.get().strip() == "" or vardia.get().strip() == "" or varmes.get().strip() == "" or varaño.get().strip() == "":
+        labelres["text"]= "Todos los campos son requeridos"
+    else:
+        limidia = 0
         dia = int(vardia.get())
         mes = int(varmes.get())
         año = int(varaño.get())
         naci = date(año, mes, dia)
-        
-        if dia>d and mes>m and año>a:
-            labelres["text"]= "No puede ingresar fechas superiores a la actaul"
-        elif dia>d and mes>m and año<a:
-            labelres["text"]= "El dia y el mes no puede ser mayor al actual, ingreselo nuevamente"
-        elif dia>d and mes<m and año>a:
-            labelres["text"]= "El dia y el año no puede ser mayor al actual, ingreselo nuevamente"
-        elif dia<d and mes>m and año>a:
-            labelres["text"]= "El mes y el año no puede ser mayor al actual, ingreselo nuevamente"
-        else:
-            if año>a:
-                labelres["text"]= "El año no puede ser mayor al actual, ingreselo nuevamente"
-            elif mes>m:
-                labelres["text"]= "El mes no puede ser mayor al actual, ingreselo nuevamente"
-            elif dia>d:
-                labelres["text"]= "El día no puede ser mayor al actual, ingreselo nuevamente"
-            else:
-
-                if año1 <= 0:
-                    labelres["text"]= "El año no puede ser menor a 0, ingreselo nuevamente"
-                if mes1 <= 0 or mes1 > 12:
-                    labelres["text"]= "El mes solo puede variar de 1 a 12, ingreselo nuevamente"
-                else:
-                    if año1 % 4 == 0:
-                        if mes1 == 2:
-                            limidia = 29
-                        else:
-                            if mes1 == 1 or mes1 == 3 or mes1 == 5 or mes1 == 7 or mes1 == 8 or mes1 == 10 or mes1 == 12:
-                                limidia = 31
-                            else:
-                                limidia = 30
-                    else:
-                        if mes1 == 2:
-                            limidia = 28
-                        else:
-                            if mes1 == 1 or mes1 == 3 or mes1 == 5 or mes1 == 7 or mes1 == 8 or mes1 == 10 or mes1 == 12:
-                                limidia = 31
-                            else:
-                                limidia = 30
-                    if dia1 <= 0 or dia1 > limidia:
-                        labelres["text"]= "El mes ingresado solo tiene " + str(limidia) + " días, ingreselo nuevamente"
-                    else:
-                        dia = vardia.get()
-                        mes = varmes.get()
-                        año = varaño.get()
-                binadia = ''
-                binames = ''
-                binaño = ''
-                while dia1-1 !=0:
-                    if dia1 % 2 == 0:
-                        binadia += '0'
-                        dia1 /= 2
-                    else:
-                        binadia += '1'
-                        dia1 = int(dia1 / 2)
-                binadia += '1'
-                binadia = binadia[::-1]
-
-                while mes1-1 !=0:
-                    if mes1 % 2 == 0:
-                        binames += '0'
-                        mes1 /= 2
-                    else:
-                        binames += '1'
-                        mes1 = int(mes1 / 2)
-                binames += '1'
-                binames = binames[::-1]
-
-                while año1-1 !=0:
-                    if año1 % 2 == 0:
-                        binaño += '0'
-                        año1 /= 2
-                    else:
-                        binaño += '1'
-                        año1 = int(año1 / 2)
-                binaño += '1'
-                binaño = binaño[::-1]
-
-                labelres["text"] = str(dia) + '/' + str(mes) + '/' + str(año) + ' = ' + binadia + '/' + binames + '/' + binaño
-    
-def funcion_2 ():
-    limidia = 0
-    dia = int(vardia.get())
-    mes = int(varmes.get())
-    año = int(varaño.get())
-    naci = date(año, mes, dia)
-    hoy = datetime.datetime.now()
-    a = hoy.year
-    m = hoy.month
-    d = hoy.day
-    if dia>d and mes>m and año>a:
-        labelres["text"]= "No puede ingresar fechas superiores a la actaul"
-    elif dia>d and mes>m and año<a:
-        labelres["text"]= "El dia y el mes no puede ser mayor al actual, ingreselo nuevamente"
-    elif dia>d and mes<m and año>a:
-        labelres["text"]= "El dia y el año no puede ser mayor al actual, ingreselo nuevamente"
-    elif dia<d and mes>m and año>a:
-        labelres["text"]= "El mes y el año no puede ser mayor al actual, ingreselo nuevamente"
-    else:
-        if año>a:
-            labelres["text"]= "El año no puede ser mayor al actual, ingreselo nuevamente"
-        elif mes>m:
-            labelres["text"]= "El mes no puede ser mayor al actual, ingreselo nuevamente"
-        elif dia>d:
-            labelres["text"]= "El día no puede ser mayor al actual, ingreselo nuevamente"
-        else:
-        
-            if año <= 0:
-                labelres["text"]= "El año no puede ser menor a 0, ingreselo nuevamente"
-            if mes <= 0 or mes > 12:
-                labelres["text"]= "El mes solo puede variar de 1 a 12, ingreselo nuevamente"
-            else:
-                if año % 4 == 0:
-                    if mes == 2:
-                        limidia = 29
-                    else:
-                        if mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12:
-                            limidia = 31
-                        else:
-                            limidia = 30
-                else:
-                    if mes == 2:
-                        limidia = 28
-                    else:
-                        if mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12:
-                            limidia = 31
-                        else:
-                            limidia = 30
-                if dia <= 0 or dia > limidia:
-                    labelres["text"]= "El mes ingresado solo tiene " + str(limidia) + " días, ingreselo nuevamente"
-                else:
-            
-                    actu = date(a, m, d)
-                    diasvivid = actu-naci
-                    labelres["text"]= "Usted nació el " + str(dia) + "/" + str(mes) + "/" + str(año) + " y ha vivido " + str(diasvivid.days) + " días"
+        hoy = datetime.datetime.now()
+        a = hoy.year
+        m = hoy.month
+        d = hoy.day
+        actu = date(a, m, d)
+        if naci>actu:
+            labelres["text"]= "Las fechas no puede ser mayor a la actual"
+        else:      
+            diasvivid = actu-naci
+            labelres["text"]= "Usted nació el " + str(dia) + "/" + str(mes) + "/" + str(año) + " y ha vivido " + str(diasvivid.days) + " días"
 
 def funcion_3():
-    nom = txt1.get()
-    ape = txt2.get()
-    tamnom = len(nom)
-    tamape = len(ape)
-    parnom = ''
-    parape = ''
-    if tamnom % 2 == 0:
-        parnom = 'su nombre es par'
+    if txt1.get().strip() == "" or txt2.get().strip() == "" or vardia.get().strip() == "" or varmes.get().strip() == "" or varaño.get().strip() == "":
+        labelres["text"]= "Todos los campos son requeridos"
     else:
-        parnom = 'su nombre es impar'
-    if tamape % 2 == 0:
-        parape = 'su apellido es par'
-    else:
-        parape = 'su apellido es impar'
-    labelres["text"]= nom + " " + ape + " " + parnom + " y " + parape
+        nom = txt1.get()
+        ape = txt2.get()
+        tamnom = len(nom)
+        tamape = len(ape)
+        parnom = ''
+        parape = ''
+        if tamnom % 2 == 0:
+            parnom = 'su nombre es par'
+        else:
+            parnom = 'su nombre es impar'
+        if tamape % 2 == 0:
+            parape = 'su apellido es par'
+        else:
+            parape = 'su apellido es impar'
+        labelres["text"]= nom + " " + ape + " " + parnom + " y " + parape
 
 def funcion_4():
-    nom = txt1.get()
-    ape = txt2.get()
-    nom1 = nom.upper()
-    ape1 = ape.upper()
-    contvocal = 0
-    contconso = 0
-    for i in nom1:
-        if i == "A" or i == "Á":
-            contvocal += 1
-        elif i == "E" or i == "É":
-            contvocal += 1
-        elif i == "I" or i == "Í":
-            contvocal += 1
-        elif i == "O" or i == "Ó":
-            contvocal += 1
-        elif i == "U" or i == "Ú":
-            contvocal += 1
-        else:
-            contconso += 1
+    if txt1.get().strip() == "" or txt2.get().strip() == "" or vardia.get().strip() == "" or varmes.get().strip() == "" or varaño.get().strip() == "":
+        labelres["text"]= "Todos los campos son requeridos"
+    else:
+        nom = txt1.get()
+        ape = txt2.get()
+        nom1 = nom.upper()
+        ape1 = ape.upper()
+        contvocal = 0
+        contconso = 0
+        for i in nom1:
+            if i == "A" or i == "Á":
+                contvocal += 1
+            elif i == "E" or i == "É":
+                contvocal += 1
+            elif i == "I" or i == "Í":
+                contvocal += 1
+            elif i == "O" or i == "Ó":
+                contvocal += 1
+            elif i == "U" or i == "Ú":
+                contvocal += 1
+            else:
+                contconso += 1
 
-    for i in ape1:
-        if i == "A" or i == "Á":
-            contvocal += 1
-        elif i == "E" or i == "É":
-            contvocal += 1
-        elif i == "I" or i == "Í":
-            contvocal += 1
-        elif i == "O" or i == "Ó":
-            contvocal += 1
-        elif i == "U" or i == "Ú":
-            contvocal += 1
-        else:
-            contconso += 1
+        for i in ape1:
+            if i == "A" or i == "Á":
+                contvocal += 1
+            elif i == "E" or i == "É":
+                contvocal += 1
+            elif i == "I" or i == "Í":
+                contvocal += 1
+            elif i == "O" or i == "Ó":
+                contvocal += 1
+            elif i == "U" or i == "Ú":
+                contvocal += 1
+            else:
+                contconso += 1
     
-    labelres["text"]= nom + " " + ape + " tiene " + str(contvocal) + " vocales y " + str(contconso) + " consonantes" 
+        labelres["text"]= nom + " " + ape + " tiene " + str(contvocal) + " vocales y " + str(contconso) + " consonantes" 
 
 def funcion_5():
-    nom = txt1.get()
-    ape = txt2.get()
-    revnom = nom[::-1]
-    revape = ape[::-1]
-    labelres["text"]= nom + " " + ape +" al revés es " + revape + " " + revnom
+    if txt1.get().strip() == "" or txt2.get().strip() == "" or vardia.get().strip() == "" or varmes.get().strip() == "" or varaño.get().strip() == "":
+        labelres["text"]= "Todos los campos son requeridos"
+    else:
+        nom = txt1.get()
+        ape = txt2.get()
+        revnom = nom[::-1]
+        revape = ape[::-1]
+        labelres["text"]= nom + " " + ape +" al revés es " + revape + " " + revnom
 
 
 btn1 = tkinter.Button(miFrame, text = "Función 1", command = funcion_1)
