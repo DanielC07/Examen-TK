@@ -26,9 +26,33 @@ def funcion_1():
     dia1 = int(vardia.get())
     mes1 = int(varmes.get())
     año1 = int(varaño.get())
-    d = dia1
-    m = mes1
-    y = año1
+    if año1 <= 0:
+        labelres["text"]= "El año no puede ser menor a 0, ingreselo nuevamente"
+    if mes1 <= 0 or mes1 > 12:
+        labelres["text"]= "El mes solo puede variar de 1 a 12, ingreselo nuevamente"
+    else:
+        if año1 % 4 == 0:
+            if mes1 == 2:
+                limidia = 29
+            else:
+                if mes1 == 1 or mes1 == 3 or mes1 == 5 or mes1 == 7 or mes1 == 8 or mes1 == 10 or mes1 == 12:
+                    limidia = 31
+                else:
+                    limidia = 30
+        else:
+            if mes1 == 2:
+                limidia = 28
+            else:
+                if mes1 == 1 or mes1 == 3 or mes1 == 5 or mes1 == 7 or mes1 == 8 or mes1 == 10 or mes1 == 12:
+                    limidia = 31
+                else:
+                    limidia = 30
+        if dia1 <= 0 or dia1 > limidia:
+            labelres["text"]= "El mes ingresado solo tiene " + str(limidia) + " días, ingreselo nuevamente"
+        else:
+            dia = vardia.get()
+            mes = varmes.get()
+            año = varaño.get()
     binadia = ''
     binames = ''
     binaño = ''
@@ -62,7 +86,7 @@ def funcion_1():
     binaño += '1'
     binaño = binaño[::-1]
 
-    labelres["text"]= str(d) + '/' + str(m) + '/' + str(y) + ' = ' + binadia + '/' + binames + '/' + binaño
+    labelres["text"] = str(dia) + '/' + str(mes) + '/' + str(año) + ' = ' + binadia + '/' + binames + '/' + binaño
     
 def funcion_2 ():
     limidia = 0
@@ -72,7 +96,7 @@ def funcion_2 ():
 
     if año <= 0:
         labelres["text"]= "El año no puede ser menor a 0, ingreselo nuevamente"
-    if mes <= 0 or mes >=12:
+    if mes <= 0 or mes > 12:
         labelres["text"]= "El mes solo puede variar de 1 a 12, ingreselo nuevamente"
     else:
         if año % 4 == 0:
@@ -92,7 +116,7 @@ def funcion_2 ():
                 else:
                     limidia = 30
         if dia <= 0 or dia > limidia:
-            labelres["text"]= "El mes ingresado solo tiene " + str(limidia) + " días"
+            labelres["text"]= "El mes ingresado solo tiene " + str(limidia) + " días, ingreselo nuevamente"
         else:
             labelres["text"]= "Usted nació el " + str(dia) + "/" + str(mes) + "/" + str(año)
 
